@@ -41,11 +41,12 @@ class MGaleria extends BD {
         }
     }
     
-    public function insertarFotor($url,$edad) {
+    public function insertarFoto($url,$nombre) {
         try {
-            $stmt = $this->conn->prepare("insert into alumnos (nombre,edad) values(:nombre,:edad)");
+            $stmt = $this->conn->prepare("insert into galeria (url,nombre) values(:url,:nombre)");
+            $stmt->bindParam(":url", $url);
             $stmt->bindParam(":nombre", $nombre);
-            $stmt->bindParam(":edad", $edad);
+            
             return $stmt->execute();
             
         } catch (PDOException $e) {

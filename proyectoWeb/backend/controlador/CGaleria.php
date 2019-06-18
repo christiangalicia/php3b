@@ -8,6 +8,22 @@ class CGaleria {
         $this->modelo= new MGaleria();
     }
     
+    public function mostrarGaleriaAdmin(){
+        $galeria= $this->modelo->consultaraGaleria();
+        $acu="";
+        foreach ($galeria as $foto){
+            $acu .= '<h3>'.$foto["nombre"].' | <a href="editar.php?id='.$foto["id"].'">Editar</a> | <a href="eliminar.php?id='.$foto["id"].'">Eliminar</a></h3>';
+            
+        }
+        return $acu;
+    }
+
+    public function subirFoto($nombre,$foto){
+        
+        copy($foto["tmp_name"], "../multimedia/".$foto["name"]);
+        $this->modelo->insertarFoto("multimedia/".$foto["name"], $nombre);
+        header("Location: panel.php");
+    }
     
     public function mostrarGaleriaPrincipal(){
         $galeria= $this->modelo->consultarGaleriaPrincipal();
