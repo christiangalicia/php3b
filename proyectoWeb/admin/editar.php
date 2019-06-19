@@ -11,10 +11,12 @@ if (!isset($_SESSION["autentificado"])){
      header("Location: index.php");
 }
 
-if(isset($_POST["nombre"]) && $_FILES["foto"]){
-    $galeria->subirFoto($_POST["nombre"], $_FILES["foto"]);
-}
 
+if(isset($_POST["nombre"]) && $_FILES["foto"] && $_POST["ide"]){
+    
+    $galeria->editarFoto($_POST["nombre"], $_FILES["foto"],$_POST["ide"]);
+}
+$foto = $galeria->foto($_GET["id"])
 ?>
 
 <!DOCTYPE html>
@@ -68,13 +70,16 @@ and open the template in the editor.
                     <div style="border: 1px solid red"> 
                         <h1>Subir Galeria</h1>
                         
-                        <form method="post" action="nuevafoto.php" enctype="multipart/form-data">
-                            Nombre foto:<br><input type="text" name="nombre" >
+                        <form method="post" action="editar.php" enctype="multipart/form-data">
+                            Nombre foto:<br><input type="text" name="nombre" value="<?php echo $foto["nombre"] ?>" >
                             <br>
                             Foto: <br>
                             <input type="file" name="foto" accept="image/*">
+                            <img src="../<?php echo $foto["url"] ?>" width="100">
                             <br>
-                            <input type="submit" value="Subir foto">
+                        
+                            <input type="hidden" name="ide" value="<?php echo $foto["id"] ?>">
+                            <input type="submit" value="Modificar foto">
                         </form>
                     </div>
 

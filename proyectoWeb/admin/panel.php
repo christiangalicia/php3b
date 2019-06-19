@@ -39,8 +39,9 @@ and open the template in the editor.
                         <div  class="col-6">
                             <nav>
                                 <ul>
-                                    <li ><a href="../">Lorem.</a></li>
+                                    <li ><a href="../">Regresar.</a></li>
                                     
+                                    <li> <a href="salir.php"><i class="fa fa-power-off"></i></a>
                                 </ul>
                             </nav>
                         </div>
@@ -63,7 +64,7 @@ and open the template in the editor.
                     <hr>
                     <div style="border: 1px solid red"> 
                         <h1>Galeria</h1>
-                        <a href="nuevafoto.php">Nueva foto</a>
+                        <a href="nuevafoto.php"><i class="fa fa-plus-circle"></i>Nueva foto</a>
                         <hr>
                         <?php echo $galeria->mostrarGaleriaAdmin()?>
                     </div>

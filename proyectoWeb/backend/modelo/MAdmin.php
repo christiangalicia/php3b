@@ -28,4 +28,20 @@ class MAdmin  extends BD{
             echo "Error: " . $e->getMessage();
         }
     }
+    
+   /* public function consultarUsuario($usuario,$password){
+        try {
+            $pass= md5($password);
+            $stmt = $this->conn->prepare("select * from usuario where usuario='".$usuario."'and password='".$pass."'");
+
+            $stmt->execute();
+            foreach ($stmt->fetchAll() as $reg) {
+                return $reg;
+            }
+
+            return null;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }*/
 }

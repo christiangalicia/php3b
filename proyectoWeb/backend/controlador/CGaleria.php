@@ -12,7 +12,7 @@ class CGaleria {
         $galeria= $this->modelo->consultaraGaleria();
         $acu="";
         foreach ($galeria as $foto){
-            $acu .= '<h3>'.$foto["nombre"].' | <a href="editar.php?id='.$foto["id"].'">Editar</a> | <a href="eliminar.php?id='.$foto["id"].'">Eliminar</a></h3>';
+            $acu .= '<h3>'.$foto["nombre"].' | <a href="editar.php?id='.$foto["id"].'"><i class="fa fa-pencil-square-o"></i>Editar</a> | <a href="eliminar.php?id='.$foto["id"].'"><i class="fa fa-trash fa-x2"></i>Eliminar</a></h3>';
             
         }
         return $acu;
@@ -37,5 +37,10 @@ class CGaleria {
                 </div>';
         }
         return $acu;
+    }
+    
+     public function foto($id){
+        $foto= $this->modelo->consultarFoto($id);
+        return $foto;
     }
 }
